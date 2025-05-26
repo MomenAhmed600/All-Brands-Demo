@@ -372,6 +372,7 @@ hr {
   width: 100px;
   height: 40px;
   border-radius: 10px;
+  border: none;
   background-color: #48cb57;
   margin-right: 9px;
 }
@@ -381,14 +382,13 @@ hr {
   width: 100px;
   height: 40px;
   border-radius: 10px;
-  background-color: inherit;
-}
-
-
-.btn-clear:hover {
   background-color: rgb(189, 36, 36);
   color: #000;
+  border: none;
 }
+
+
+
 
 
 /* <----------------top ten reviews-------------> */
