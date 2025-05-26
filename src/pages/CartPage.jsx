@@ -35,6 +35,9 @@ function CartPage() {
   //       .then((data) => setCartsList(data));
   //   }
   // }, [user]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

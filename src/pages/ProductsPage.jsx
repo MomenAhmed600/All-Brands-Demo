@@ -146,11 +146,16 @@ function ProductsPage() {
       {listvideo.map((product) => (
         <div className="viedo" key={product.id}>
           <video
-            loop="loop"
-            muted="muted"
-            autoPlay="auto"
+            loop
+            muted
+            playsInline
             src={product.video}
-          ></video>
+            ref={(el) => {
+              if (el && window.innerWidth > 768) {
+                el.play().catch(() => {});
+              }
+            }}
+          />
         </div>
       ))}
       <div className="pearnt-product">
