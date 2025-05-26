@@ -9,7 +9,6 @@ export default function MainContent() {
     const videoEl = videoRef.current;
 
     if (videoEl && isDesktop) {
-      // Autoplay if allowed
       videoEl.play().catch((err) => {
         console.log("Autoplay blocked", err);
       });

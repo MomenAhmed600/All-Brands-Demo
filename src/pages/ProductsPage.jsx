@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsCart } from "react-icons/bs";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -114,6 +114,18 @@ function ProductsPage() {
     window.scrollTo(0, 0);
   }, []);
 
+  const videoRef = useRef(null);
+  useEffect(() => {
+    const isDesktop = window.innerWidth > 768;
+    const videoEl = videoRef.current;
+
+    if (videoEl && isDesktop) {
+      videoEl.play().catch((err) => {
+        console.log("Autoplay blocked", err);
+      });
+    }
+  }, []);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -146,15 +158,12 @@ function ProductsPage() {
       {listvideo.map((product) => (
         <div className="viedo" key={product.id}>
           <video
+            ref={videoRef}
             loop
             muted
             playsInline
+            controls={window.innerWidth <= 768}
             src={product.video}
-            ref={(el) => {
-              if (el && window.innerWidth > 768) {
-                el.play().catch(() => {});
-              }
-            }}
           />
         </div>
       ))}
