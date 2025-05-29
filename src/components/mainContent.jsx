@@ -1,20 +1,39 @@
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function MainContent() {
 
   const navtext = useNavigate();
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+      const isDesktop = window.innerWidth > 768;
+      const videoEl = videoRef.current;
+  
+      if (videoEl && isDesktop) {
+        videoEl
+          .play()
+          .catch((err) => {
+            console.log("Autoplay blocked", err);
+          });
+      }
+    }, []);
 
   return (
     <>
       <div className="">
       <div className="viedo">
         <video
-          loop="loop"
-          muted="muted"
-          autoPlay="auto"
-          src="main video.mp4"
-        ></video>
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            autoPlay
+            controls={window.innerWidth <= 768}
+            src="main video.mp4"
+          />
       </div>
+          
       
         <div className="img-cover">
           <img

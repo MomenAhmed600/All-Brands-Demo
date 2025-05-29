@@ -372,6 +372,15 @@ hr {
   background-color: #48cb57;
 }
 
+.btn-clear {
+  margin-top: 10px;
+  margin-left: 9px;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(188, 34, 34);
+  
+}
 
 
 /* <----------------top ten reviews-------------> */
