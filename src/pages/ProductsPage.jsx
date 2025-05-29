@@ -162,6 +162,7 @@ function ProductsPage() {
             loop
             muted
             playsInline
+            autoPlay
             controls={window.innerWidth <= 768}
             src={product.video}
           />

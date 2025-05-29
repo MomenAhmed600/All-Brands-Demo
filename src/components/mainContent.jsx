@@ -24,6 +24,7 @@ export default function MainContent() {
             loop
             muted
             playsInline
+            autoPlay
             controls={window.innerWidth <= 768}
             src="main video.mp4"
           />
