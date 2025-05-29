@@ -136,8 +136,6 @@ body {
   margin-bottom: 10px;
 }
 
-
-
 .close-btn {
   background: none;
   border: none;
@@ -366,28 +364,13 @@ hr {
   justify-content: center;
 }
 
-
 .btn-sreach {
   margin-top: 10px;
   width: 100px;
   height: 40px;
   border-radius: 10px;
-  border: none;
   background-color: #48cb57;
-  margin-right: 9px;
 }
-
-.btn-clear {
-  margin-top: 10px;
-  width: 100px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: rgb(189, 36, 36);
-  color: #000;
-  border: none;
-}
-
-
 
 
 
@@ -1090,10 +1073,10 @@ border-radius: 10px
       margin-left: 31px;
     }
     .plus {
-      height: 2.0rem;
+      height: 2.1rem;
     }
     .minus {
-      height: 2.0rem;
+      height: 2.1rem;
     }
     #btn-fevo {
       width: 9rem;

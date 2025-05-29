@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-// import data from "../db.json";
+import data from "../db.json";
 import { useCart } from "../context/CartContext";
 
 function DetailsPage() {
@@ -14,39 +14,18 @@ function DetailsPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // useEffect(() => {
-  //   const foundProduct = [
-  //     ...(data["top10-all-products"] || []),
-  //     ...(data["all-products-cards"] || []),
-  //     ...(data["top10-man"] || []),
-  //     ...(data["man"] || []),
-  //     ...(data["top10-woman"] || []),
-  //     ...(data["woman"] || []),
-  //     ...(data["top10-kids"] || []),
-  //     ...(data["kids"] || []),
-  //   ].find((item) => item.id === id);
-  //   setProduct(foundProduct);
-  // }, [id]);
-
   useEffect(() => {
-    fetch("/db.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const foundProduct = [
-          ...(data["top10-all-products"] || []),
-          ...(data["all-products-cards"] || []),
-          ...(data["top10-man"] || []),
-          ...(data["man"] || []),
-          ...(data["top10-woman"] || []),
-          ...(data["woman"] || []),
-          ...(data["top10-kids"] || []),
-          ...(data["kids"] || []),
-        ].find((item) => item.id === id);
-        setProduct(foundProduct);
-      })
-      .catch((err) => {
-        console.error("Error loading product data:", err);
-      });
+    const foundProduct = [
+      ...(data["top10-all-products"] || []),
+      ...(data["all-products-cards"] || []),
+      ...(data["top10-man"] || []),
+      ...(data["man"] || []),
+      ...(data["top10-woman"] || []),
+      ...(data["woman"] || []),
+      ...(data["top10-kids"] || []),
+      ...(data["kids"] || []),
+    ].find((item) => item.id === id);
+    setProduct(foundProduct);
   }, [id]);
 
   const handleAddCart = (product) => {

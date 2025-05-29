@@ -32,12 +32,12 @@ function CustomNavbar() {
   };
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value)
   };
-
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearch(inputValue);
+   e.preventDefault();
+   setSearch(inputValue)
   };
 
   const handleSearchClose = () => setShowSearch(false);
@@ -115,25 +115,18 @@ function CustomNavbar() {
           <Modal.Title>Search Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          
+
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search Item"
-              value={inputValue}
-              onChange={handleChange}
-              className="form-control"
-            />
+          <input
+            type="text"
+            placeholder="Search Item"
+            value={inputValue}
+            onChange={handleChange}
+            className="form-control"
+          />
             <div className="btn-sreach-di">
-              <button type="submit" className="btn-sreach">
-                Search
-              </button>
-              <button
-                type="submit"
-                className="btn-clear"
-                onClick={() => setInputValue("")}
-              >
-                Clear
-              </button>
+            <button type="submit" className="btn-sreach">Search</button>
             </div>
           </form>
         </Modal.Body>
