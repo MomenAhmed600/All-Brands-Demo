@@ -142,16 +142,14 @@ function ProductsPage() {
     product.title.toLowerCase().includes(search.toLowerCase())
   );
 
-   useEffect(() => {
+  useEffect(() => {
     const isDesktop = window.innerWidth > 768;
     const videoEl = videoRef.current;
 
     if (videoEl && isDesktop) {
-      videoEl
-        .play()
-        .catch((err) => {
-          console.log("Autoplay blocked", err);
-        });
+      videoEl.play().catch((err) => {
+        console.log("Autoplay off", err);
+      });
     }
   }, []);
 
@@ -239,7 +237,7 @@ function ProductsPage() {
       </div>
 
       <div className="container py-5">
-        <div className="row row-cols-1 row-cols-md-3 g-4 py-2">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 py-2">
           {listpro.map((product) => (
             <div className="col" key={product.id}>
               <div className="card pdcard">
