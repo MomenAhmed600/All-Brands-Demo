@@ -15,6 +15,7 @@ function ProductsPage() {
   const { addCart } = useCart();
   const { search } = useSearch();
   const videoRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // useEffect(() => {
   //   if (!gender) {
@@ -157,6 +158,8 @@ function ProductsPage() {
     <>
       {listvideo.map((product) => (
         <div className="viedo" key={product.id}>
+          {isLoading && <div className="video-loading">LOADING VIDEO ...</div>}
+
           <video
             ref={videoRef}
             loop
@@ -165,6 +168,8 @@ function ProductsPage() {
             autoPlay
             controls={window.innerWidth <= 768}
             src={product.video}
+            onLoadedData={() => setIsLoading(false)}
+            style={{ display: isLoading ? "none" : "block" }}
           />
         </div>
       ))}
@@ -201,6 +206,7 @@ function ProductsPage() {
               <img
                 src={product.image}
                 alt={product.title}
+                loading="lazy"
                 className="product--image"
               />
               <h4>{product.title}</h4>
@@ -244,7 +250,8 @@ function ProductsPage() {
                 <img
                   src={product.image}
                   className="card-img-top"
-                  alt="pic clothes"
+                  alt={product.title}
+                  loading="lazy"
                 />
                 <div className="card-body pdcardbody">
                   <h5 className="card-title">{product.title}</h5>

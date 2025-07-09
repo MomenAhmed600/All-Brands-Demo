@@ -124,7 +124,11 @@ function CustomNavbar() {
               className="form-control"
             />
             <div className="btn-sreach-di">
-              <button type="submit" className="btn-sreach">
+              <button
+                type="submit"
+                className="btn-sreach"
+                onClick={handleSearchClose}
+              >
                 Search
               </button>
               <button

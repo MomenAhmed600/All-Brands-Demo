@@ -8,31 +8,35 @@ import CreateAccount from "./pages/CreateAcountPage";
 import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
 import { UserProvider } from "./context/UserContext";
-import ProductsPage from "./pages/ProductsPage";
+// import ProductsPage from "./pages/ProductsPage";
+import { lazy, Suspense } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import { CartProvider } from "./context/CartContext";
 import { SearchProvider } from "./context/SearchContext";
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
 
 function App() {
   return (
     <>
       <UserProvider>
         <Router>
-            <SearchProvider>
-          <CartProvider>
-            <CustomNavbar />
-            <Routes>
-              <Route path="/create-account" element={<CreateAccount />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/profile/:userId" element={<ProfilePage />} />
-              <Route path="/" element={<MainContent />} />
-              <Route path="/carts" element={<CartPage />} />
-              <Route path="/products/:gender?" element={<ProductsPage />} />
-              <Route path="/details-page/:id" element={<DetailsPage />} />
-            </Routes>
-            <Footer />
-          </CartProvider>
-            </SearchProvider>
+          <SearchProvider>
+            <CartProvider>
+              <CustomNavbar />
+              <Suspense fallback={<div>Loading Page...</div>}>
+                <Routes>
+                  <Route path="/create-account" element={<CreateAccount />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/profile/:userId" element={<ProfilePage />} />
+                  <Route path="/" element={<MainContent />} />
+                  <Route path="/carts" element={<CartPage />} />
+                  <Route path="/products/:gender?" element={<ProductsPage />} />
+                  <Route path="/details-page/:id" element={<DetailsPage />} />
+                </Routes>
+              </Suspense>
+              <Footer />
+            </CartProvider>
+          </SearchProvider>
         </Router>
       </UserProvider>
     </>
