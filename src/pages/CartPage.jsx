@@ -46,18 +46,37 @@ function CartPage() {
               <div className="review-p-fevo" key={product.id}>
                 <div className="row" id="bg-prof-img">
                   <div className="col-md-2 " id="img-fv">
-                    <img
-                      src={product.image}
-                      alt=""
-                      className="img-fluid mt-1"
-                      id="img-favo"
-                    />
+                    <Link to={`/details-page/${product.id}`}>
+                      <img
+                        src={product.image}
+                        alt=""
+                        className="img-fluid mt-1 cursor-pointer"
+                        id="img-favo"
+                      />
+                    </Link>
                   </div>
                   <div className="col-md-5 favo-content">
-                    <h2 className="mt-1 ">{product.title}</h2>
-                    <p className="mt-2" id="favo-para">
+                    <Link
+                      to={`/details-page/${product.id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <h2
+                        className="mt-1 product-title-cart"
+                        style={{ color: "black" }}
+                      >
+                        {product.title}
+                      </h2>
+                    </Link>
+                    <h5 className="mt-1" id="favo-para">
                       {product.description}
-                    </p>
+                    </h5>
+                    <div className="size-buttons">
+                      <button>S</button>
+                      <button>M</button>
+                      <button>L</button>
+                      <button>XL</button>
+                      <button>XXL</button>
+                    </div>
 
                     <div className="links-favo">
                       <div>
@@ -100,10 +119,6 @@ function CartPage() {
                         </div>
                       </div>
                     </div>
-
-                    <Link to={`/details-page/${product.id}`}>
-                      <button className="btn btn-dark">View Details</button>
-                    </Link>
                   </div>
                 </div>
               </div>

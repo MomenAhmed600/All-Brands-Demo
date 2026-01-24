@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BsCart } from "react-icons/bs";
+// import { BsCart } from "react-icons/bs";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link, useParams } from "react-router-dom";
@@ -16,80 +16,6 @@ function ProductsPage() {
   const { search } = useSearch();
   const videoRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   if (!gender) {
-  //     // <------------product-video-------------------->
-  //     fetch("http://localhost:8000/allproduct-video")
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setListvideo(data);
-  //       });
-  //     // <------------cards-video-------------------->
-  //     fetch("http://localhost:8000/all-products-cards")
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setList(data);
-  //       });
-
-  //     // <------------top-10-------------------->
-  //     fetch("http://localhost:8000/top10-all-products")
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setListtop10(data);
-  //       });
-
-  //     // <------------front-photo-------------------->
-  //     fetch("http://localhost:8000/allproduct-front-photo")
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setListfrontphoto(data);
-  //       });
-  //   } else if (gender.length > 0 && ["woman", "man", "kids"].includes(gender)) {
-  //     // <-------------video-------------------->
-  //     fetch(`http://localhost:8000/${gender}-video`)
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setListvideo(data);
-  //       });
-  //     // <------------cards-video-------------------->
-  //     fetch(`http://localhost:8000/${gender}`)
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setList(data);
-  //       });
-
-  //     // <------------top-10-------------------->
-  //     fetch(`http://localhost:8000/top10-${gender}`)
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setListtop10(data);
-  //       });
-
-  //     // <------------front-photo-------------------->
-  //     fetch(`http://localhost:8000/${gender}-front-photo`)
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setListfrontphoto(data);
-  //       });
-  //   }
-  // }, [gender]);
 
   useEffect(() => {
     fetch("/db.json")
@@ -140,7 +66,7 @@ function ProductsPage() {
   };
 
   const listpro = list.filter((product) =>
-    product.title.toLowerCase().includes(search.toLowerCase())
+    product.title.toLowerCase().includes(search.toLowerCase()),
   );
 
   useEffect(() => {
@@ -195,14 +121,14 @@ function ProductsPage() {
         <Carousel responsive={responsive}>
           {listtop10.map((product) => (
             <div className="card-review" key={product.id}>
-              <button
+              {/* <button
                 className="cart-card-review"
                 onClick={() => {
                   handleAddCart(product);
                 }}
               >
                 <BsCart className="cart-logo-review" />
-              </button>
+              </button> */}
               <img
                 src={product.image}
                 alt={product.title}
@@ -260,15 +186,14 @@ function ProductsPage() {
                     {product.price} <span>EGP</span>
                   </h5>
                 </div>
-                <div className="mb-4 d-flex justify-content-around wsbtn">
+                <div className="mb-4 d-flex align-items-center justify-content-center wsbtn gap-4">
                   <Link to={`/details-page/${product.id}`}>
                     <button className="btn btn-dark">View Details</button>
                   </Link>
+
                   <button
                     className="btn btn-success"
-                    onClick={() => {
-                      handleAddCart(product);
-                    }}
+                    onClick={() => handleAddCart(product)}
                   >
                     Add Cart
                   </button>

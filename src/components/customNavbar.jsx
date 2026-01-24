@@ -49,7 +49,7 @@ function CustomNavbar() {
           <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
             <div className="img-logo">
               <img
-                src="brand-logo.png"
+                src="/brand-logo.png"
                 className="d-inline-block align-top logo"
                 alt="Logo"
               />

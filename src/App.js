@@ -2,17 +2,18 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import CustomNavbar from "./components/customNavbar";
 import Footer from "./components/footer";
-import MainContent from "./components/mainContent";
-import DetailsPage from "./components/DetailsPage";
-import CreateAccount from "./pages/CreateAcountPage";
-import CartPage from "./pages/CartPage";
-import LoginPage from "./pages/LoginPage";
 import { UserProvider } from "./context/UserContext";
-// import ProductsPage from "./pages/ProductsPage";
 import { lazy, Suspense } from "react";
-import ProfilePage from "./pages/ProfilePage";
 import { CartProvider } from "./context/CartContext";
 import { SearchProvider } from "./context/SearchContext";
+import { SyncLoader } from "react-spinners";
+
+const MainContent = lazy(() => import("./components/mainContent"));
+const DetailsPage = lazy(() => import("./components/DetailsPage"));
+const CreateAccount = lazy(() => import("./pages/CreateAcountPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage"));
 
 function App() {
@@ -23,7 +24,17 @@ function App() {
           <SearchProvider>
             <CartProvider>
               <CustomNavbar />
-              <Suspense fallback={<div>Loading Page...</div>}>
+
+              <Suspense
+                fallback={
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    style={{ minHeight: "60vh" }}
+                  >
+                    <SyncLoader color="#000000" size={15} margin={5} />
+                  </div>
+                }
+              >
                 <Routes>
                   <Route path="/create-account" element={<CreateAccount />} />
                   <Route path="/login" element={<LoginPage />} />
@@ -34,6 +45,7 @@ function App() {
                   <Route path="/details-page/:id" element={<DetailsPage />} />
                 </Routes>
               </Suspense>
+
               <Footer />
             </CartProvider>
           </SearchProvider>
